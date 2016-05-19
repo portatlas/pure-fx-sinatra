@@ -9,6 +9,7 @@
       <th>OF</th>
       <th>FOR</th>
       <th>AT</th>
+      <th>BY</th>
     </tr>
     <% @fxtrans.each do |tran| %>
     <tr>
@@ -27,6 +28,7 @@
         <td><%= tran.curr_buy %></td>
       <% end %>
       <td>RATE TBD</td>
+      <td> <%= tran.requestor.email %></td>
     </tr>
     <% end %>
   </table>
