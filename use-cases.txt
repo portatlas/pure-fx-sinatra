@@ -1,0 +1,4 @@
+As a User
+- User wants to sell the remaining 40 CAD dollars and would like to get EUR
+- User wants to buy 400 TWD dollar with USD dollar
+- User wants to see all the posted transactions and their status
