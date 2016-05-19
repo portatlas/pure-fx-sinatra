@@ -4,7 +4,7 @@ class CreateFxtrans < ActiveRecord::Migration
       t.integer :requestor_id, :null => false
       t.integer :acceptor_id
       t.string :trantype, :null => false
-      t.integer :size, :null => false
+      t.integer :amount, :null => false
       t.integer :fxrate
       t.string :curr_buy, :null => false
       t.string :curr_sell, :null => false

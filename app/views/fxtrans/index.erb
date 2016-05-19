@@ -6,7 +6,7 @@
       <th>ZIPCODE</th>
       <th>ACTION</th>
       <th>OF</th>
-      <th>ORDER SIZE</th>
+      <th>AMOUNT</th>
       <th>FOR</th>
       <th>AT</th>
       <th>BY</th>
@@ -21,7 +21,7 @@
       <% elsif tran.trantype == "SELL" %>
         <td><%= tran.curr_sell %></td>
       <% end %>
-      <td><%= tran.size %></td>
+      <td><%= tran.amount %></td>
       <% if tran.trantype == "BUY" %>
         <td><%= tran.curr_sell %></td>
       <% elsif tran.trantype == "SELL" %>
@@ -40,7 +40,7 @@
       <th>ZIPCODE</th>
       <th>ACTION</th>
       <th>OF</th>
-      <th>ORDER SIZE</th>
+      <th>AMOUNT</th>
       <th>FOR</th>
       <th>AT</th>
       <th>BY</th>
@@ -55,7 +55,7 @@
       <% elsif tran.trantype == "SELL" %>
         <td><%= tran.curr_sell %></td>
       <% end %>
-      <td><%= tran.size %></td>
+      <td><%= tran.amount %></td>
       <% if tran.trantype == "BUY" %>
         <td><%= tran.curr_sell %></td>
       <% elsif tran.trantype == "SELL" %>

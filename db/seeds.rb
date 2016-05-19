@@ -17,7 +17,7 @@ end
   cur2 = available_currency.reject{|cur| cur == cur1}.sample
   Fxtran.create( requestor_id: random_user.id,
                      trantype: ["BUY", "SELL"].sample,
-                         size: rand(10..51),
+                       amount: rand(10..51),
                      curr_buy: cur1,
                     curr_sell: cur2,
                        status: "PENDING",

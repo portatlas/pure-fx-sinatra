@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>NEW FX FORM</h1>
+
+  <form class="fx-request" action="/fxtrans" method="post">
+
+    <div class="form-group">
+      <label for="fxtran_trantype" class="control-label">TRANSACTION ORDER TYPE: </label>
+      <select name="fxtran[trantype]" >
+        <option value="BUY">BUY</option>
+        <option value="SELL">SELL</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="fxtran_amount" class="control-label">AMOUNT: </label>
+      <input class="form-control" id="fxtran_amount" type="text" name="fxtran[amount]">
+    </div>
+
+    <div class="form-group">
+      <label for="fxtran_curr_buy" class="control-label">CURRENCY TO BUY: </label>
+      <input class="form-control" id="fxtran_curr_buy" type="text" name="fxtran[curr_buy]">
+    </div>
+
+    <div class="form-group">
+      <label for="fxtran_curr_sell" class="control-label">CURRENCY TO SELL: </label>
+      <input class="form-control" id="fxtran_curr_sell" type="text" name="fxtran[curr_sell]">
+    </div>
+
+    <div class="form-group">
+      <label for="fxtran_zipcode" class="control-label">ZIPCODE: </label>
+      <input class="form-control" id="fxtran_zipcode" type="text" name="fxtran[zipcode]">
+    </div>
+
+    <button class="btn btn-primary" type="submit">SUBMIT</button>
+  </form>
+
+</div>
