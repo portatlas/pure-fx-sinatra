@@ -3,7 +3,7 @@ class CreateFxtrans < ActiveRecord::Migration
     create_table :fxtrans do |t|
       t.integer :requestor_id, :null => false
       t.integer :acceptor_id
-      t.string :trantype, :null => false
+      t.string :trantype
       t.integer :amount, :null => false
       t.integer :fxrate
       t.string :curr_buy, :null => false

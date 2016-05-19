@@ -1,69 +1,26 @@
 <div class="container">
-<h1>All Buy's</h1>
+<h1>All FX's</h1>
   <table>
     <tr>
       <th>ID </th>
       <th>ZIPCODE</th>
-      <th>ACTION</th>
       <th>OF</th>
       <th>AMOUNT</th>
       <th>FOR</th>
       <th>AT</th>
       <th>BY</th>
     </tr>
-    <% @fxbuys.each do |tran| %>
+    <% @fxtrans.each do |tran| %>
     <tr>
       <td><%= tran.id %> </td>
       <td><%= tran.zipcode %></td>
-      <td><%= tran.trantype %></td>
-      <% if tran.trantype == "BUY" %>
-        <td><%= tran.curr_buy %></td>
-      <% elsif tran.trantype == "SELL" %>
-        <td><%= tran.curr_sell %></td>
-      <% end %>
+      <td><%= tran.curr_buy %></td>
       <td><%= tran.amount %></td>
-      <% if tran.trantype == "BUY" %>
-        <td><%= tran.curr_sell %></td>
-      <% elsif tran.trantype == "SELL" %>
-        <td><%= tran.curr_buy %></td>
-      <% end %>
+      <td><%= tran.curr_sell %></td>
       <td>RATE TBD</td>
       <td> <%= tran.requestor.email %></td>
     </tr>
     <% end %>
   </table>
 
-  <h1>All Sells's</h1>
-  <table>
-    <tr>
-      <th>ID </th>
-      <th>ZIPCODE</th>
-      <th>ACTION</th>
-      <th>OF</th>
-      <th>AMOUNT</th>
-      <th>FOR</th>
-      <th>AT</th>
-      <th>BY</th>
-    </tr>
-    <% @fxsells.each do |tran| %>
-    <tr>
-      <td><%= tran.id %> </td>
-      <td><%= tran.zipcode %></td>
-      <td><%= tran.trantype %></td>
-      <% if tran.trantype == "BUY" %>
-        <td><%= tran.curr_buy %></td>
-      <% elsif tran.trantype == "SELL" %>
-        <td><%= tran.curr_sell %></td>
-      <% end %>
-      <td><%= tran.amount %></td>
-      <% if tran.trantype == "BUY" %>
-        <td><%= tran.curr_sell %></td>
-      <% elsif tran.trantype == "SELL" %>
-        <td><%= tran.curr_buy %></td>
-      <% end %>
-      <td>RATE TBD</td>
-      <td> <%= tran.requestor.email %></td>
-    </tr>
-    <% end %>
-  </table>
 </div>

@@ -1,22 +1,33 @@
 <div class="container">
   <h1>NEW FX FORM</h1>
-
   <form class="fx-request" action="/fxtrans" method="post">
 
+    <input type="hidden" name="fxtran[requestor_id]" value="<%= session[:user_id] %>"></input>
+
     <div class="form-group">
-      <label for="fxtran_trantype" class="control-label">TRANSACTION ORDER TYPE: </label>
-      <select name="fxtran[trantype]" >
-        <option value="BUY">BUY</option>
-        <option value="SELL">SELL</option>
+      <label for="fxtran_trantype" class="control-label">I HAVE
+
+      <label for="fxtran_amount" class="control-label"></label>
+      <input class="form-control" id="fxtran_amount" type="text" name="fxtran[amount]">
+
+        OF THIS CURRENCY: </label>
+      <select name="fxtran[curr_sell]" >
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="CHF">CHF</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="fxtran_amount" class="control-label">AMOUNT: </label>
-      <input class="form-control" id="fxtran_amount" type="text" name="fxtran[amount]">
+      <label for="fxtran_trantype" class="control-label">I WANT THIS CURRENCY: </label>
+      <select name="fxtran[curr_buy]" >
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="CHF">CHF</option>
+      </select>
     </div>
 
-    <div class="form-group">
+<!--     <div class="form-group">
       <label for="fxtran_curr_buy" class="control-label">CURRENCY TO BUY: </label>
       <input class="form-control" id="fxtran_curr_buy" type="text" name="fxtran[curr_buy]">
     </div>
@@ -24,12 +35,14 @@
     <div class="form-group">
       <label for="fxtran_curr_sell" class="control-label">CURRENCY TO SELL: </label>
       <input class="form-control" id="fxtran_curr_sell" type="text" name="fxtran[curr_sell]">
-    </div>
+    </div> -->
 
     <div class="form-group">
       <label for="fxtran_zipcode" class="control-label">ZIPCODE: </label>
       <input class="form-control" id="fxtran_zipcode" type="text" name="fxtran[zipcode]">
     </div>
+
+    <input type="hidden" name="fxtran[status]" value="OPEN"></input>
 
     <button class="btn btn-primary" type="submit">SUBMIT</button>
   </form>
