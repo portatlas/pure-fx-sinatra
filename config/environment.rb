@@ -18,6 +18,8 @@ require 'logger'
 
 require 'pry-byebug'
 
+require 'dotenv'
+
 require 'sinatra'
 require "sinatra/reloader" if development?
 
