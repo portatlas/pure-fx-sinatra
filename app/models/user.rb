@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
-  has_many :fxtrans
+  has_many :fxrequests, {class_name: "Fxtran", foreign_key: :requestor_id}
+  has_many :fxaccepts, {class_name: "Fxtran", foreign_key: :acceptor_id}
 
   # has_secure_password
 
