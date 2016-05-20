@@ -1,5 +1,5 @@
 <div class="container">
-<h1>All FX's</h1>
+<h1>ALL OPEN FX REQUEST</h1>
   <table>
     <tr>
       <th>ID</th>
@@ -10,6 +10,7 @@
       <th>WANT</th>
       <th>RATES</th>
       <th>EXPECTED VALUES</th>
+      <th>STATUS</th>
     </tr>
     <% @fxtrans.length.times do |num| %>
     <tr>
@@ -21,6 +22,7 @@
       <td class="quote"><%= @fxtrans[num].curr_buy %></td>
       <td><%= @fx_rates[num] %></td>
       <td><%= @converted_vals[num] %></td>
+      <td><%= @fxtrans[num].status %></td>
     </tr>
     <% end %>
   </table>

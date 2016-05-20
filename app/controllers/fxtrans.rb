@@ -1,5 +1,5 @@
 get '/fxtrans' do
-  @fxtrans = Fxtran.all
+  @fxtrans = Fxtran.where(status: "OPEN")
                    .order('zipcode ASC')
                    .order('curr_buy ASC')
                    .order('curr_sell ASC')

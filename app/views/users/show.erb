@@ -1,12 +1,13 @@
 <div class="container">
 <h1>Welcome <%= @user.first_name %> <%= @user.last_name %>!</h1>
 
-<% if @user.fxrequests.size < 1 %>
+<% if @open_user_fxrequest.size < 1 %>
   <a href="/fxtrans/new">Create an FX Request</a>
 <% else %>
   Currently, you can only process one request at a time!
 <% end %>
 
+<% if @open_user_fxrequest.length >= 1 %>
 <h3>OPEN FX REQUEST</h3>
   <table>
     <tr>
@@ -17,23 +18,24 @@
       <th>AT</th>
       <th>EXPECTED VALUE</th>
       <th>CURRENCY YOU WANT</th>
-      <th>STATUS</th>
     </tr>
-      <% @user.fxrequests.length.times do |num| %>
+      <% @open_user_fxrequest.length.times do |num| %>
     <tr>
-      <td><%= @user.fxrequests[num].id %> </td>
-      <td><%= @user.fxrequests[num].zipcode %></td>
-      <td><%= @user.fxrequests[num].amount %></td>
-      <td class="source"><%= @user.fxrequests[num].curr_sell %></td>
+      <td><%= @open_user_fxrequest[num].id %> </td>
+      <td><%= @open_user_fxrequest[num].zipcode %></td>
+      <td><%= @open_user_fxrequest[num].amount %></td>
+      <td class="source"><%= @open_user_fxrequest[num].curr_sell %></td>
       <td><%= @fx_rates[num] %></td>
       <td><%= @converted_vals[num] %></td>
-      <td class="quote"><%= @user.fxrequests[num].curr_buy %></td>
-      <td><%= @user.fxrequests[num].status %></td>
+      <td class="quote"><%= @open_user_fxrequest[num].curr_buy %></td>
     </tr>
-    <% end %>
+  <% end %>
   </table>
+<a href="/users/<%= @user.id %>/fxtrans/<%= @user.fxrequests[0].id %>/edit">MODIFY YOUR FX REQUEST</a>
+<% end %>
 
-<% if @user.fxrequests.size >= 1 %>
+
+<% if @fxmatches != nil %>
   <h3>MATCHED FX REQUEST</h3>
   <table>
     <tr>

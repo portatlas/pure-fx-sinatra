@@ -12,23 +12,34 @@ post '/users' do
   end
 end
 
-# while the number of fx transactions is greater than zero
-# iterate through the fxrequests
-# calculate the fx rate and store it in an array of fx rates
-# caculate the converted_val and store it in an converted_val array
 
-#
 
 get '/users/:id' do
   @user = User.find(params[:id])
   if @user.id == session[:user_id]
-    user_fxrequest = @user.fxrequests
-
-    calculate_rate(user_fxrequest, user_fxrequest)
-
+    @open_user_fxrequest = @user.fxrequests.where(status: "OPEN")
+    calculate_rate(@open_user_fxrequest, @open_user_fxrequest)
+    # binding.pry
     erb :'users/show'
   else
     redirect '/'
   end
+end
+
+get '/users/:user_id/fxtrans/:id/edit' do
+  @user = User.find(params[:user_id])
+  @fxrequest = @user.fxrequests.find(params[:id])
+  erb :'fxtrans/edit'
+end
+
+put '/users/:user_id/fxtrans/:id' do
+  @user = User.find(params[:user_id])
+  @fxtran = @user.fxrequests.find(params[:id])
+  if @fxtran.update_attributes(params[:fxtran])
+    redirect "/users/#{@user.id}"
+  else
+    erb :'fxtrans/edit' #show edit fxtrans view again(potentially displaying errors)
+  end
+
 end
 

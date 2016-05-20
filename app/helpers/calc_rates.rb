@@ -30,7 +30,6 @@ helpers do
         @cpty_fx_rates << ((@cpty_converted_val / @cpty_amount)).round(2)
         @target_cpty_difference << (@amount - @cpty_converted_vals[matches_count]).round(2)
         matches_count += 1
-        # binding.pry
         end
       end
       counter += 1
@@ -38,5 +37,11 @@ helpers do
     @fx_rates
     @converted_vals
   end
+
+# while the number of fx transactions is greater than zero
+# iterate through the fxrequests
+# calculate the fx rate and store it in an array of fx rates
+# caculate the converted_val and store it in an converted_val array
+
 
 end
