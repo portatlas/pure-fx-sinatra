@@ -2,9 +2,9 @@ helpers do
 
   def calculate_rate(transactions, matching_fx)
     Money.default_bank = Money::Bank::GoogleCurrency.new
-    @converted_vals = []
-    @fx_rates = []
-    @target_cpty_difference = []
+    @converted_vals = Array.new
+    @fx_rates = Array.new
+    @target_cpty_difference = Array.new
     @cpty_fx_rates = Array.new
     @cpty_converted_vals = Array.new
     counter = 0
@@ -28,7 +28,7 @@ helpers do
         @cpty_converted_val = money.exchange_to(@fxmatches[matches_count].curr_buy)
         @cpty_converted_vals << (@cpty_converted_val.to_f)
         @cpty_fx_rates << ((@cpty_converted_val / @cpty_amount)).round(2)
-        @target_cpty_difference << (@amount - @cpty_converted_vals[matches_count]).to_d
+        @target_cpty_difference << (@amount - @cpty_converted_vals[matches_count]).round(2)
         matches_count += 1
         # binding.pry
         end
