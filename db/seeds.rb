@@ -20,7 +20,7 @@ end
                        amount: rand(10..51),
                      curr_buy: cur1,
                     curr_sell: cur2,
-                       status: "PENDING",
+                       status: "OPEN",
                       zipcode: [14532, 34595].sample )
 end
 
