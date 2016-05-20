@@ -17,7 +17,9 @@ helpers do
 
       if matching_fx.length == 0
       else
-        @fxmatches = Fxtran.where(curr_sell: matching_fx[counter].curr_buy,
+        @fxmatches = Fxtran.where(
+                                     status: "OPEN",
+                                  curr_sell: matching_fx[counter].curr_buy,
                                    curr_buy: matching_fx[counter].curr_sell,
                                     zipcode: matching_fx[counter].zipcode)
                     .where.not(requestor_id: session[:user_id])
