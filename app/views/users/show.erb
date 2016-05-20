@@ -9,10 +9,10 @@
       <th>ID</th>
       <th>ZIPCODE</th>
       <th>AMOUNT</th>
-      <th>HAVE</th>
+      <th>CURRENCY YOU HAVE</th>
       <th>AT</th>
-      <th>FOR</th>
-      <th>WANT</th>
+      <th>EXPECTED VALUE</th>
+      <th>CURRENCY YOU WANT</th>
       <th>STATUS</th>
     </tr>
       <% @user.fxrequests.length.times do |num| %>
@@ -31,35 +31,32 @@
 
 <h3>MATCHED FX's</h3>
   <table>
+    <% @fxmatches.length.times do |num| %>
     <tr>
       <th>ID</th>
       <th>ZIPCODE</th>
-      <th>USER</th>
-      <th>AMOUNT</th>
+      <th>CURRENCY <%= @fxmatches[num].requestor.first_name.upcase %> HAS</th>
       <th>HAVE</th>
       <th>RATE</th>
       <th>AMOUNT</th>
-      <th>WANT</th>
+      <th>CURRENCY <%= @fxmatches[num].requestor.first_name.upcase %> WANTS</th>
+      <th>DIFFERENCE</th>
       <th>EMAIL</th>
     </tr>
-    <% @fxmatches.length.times do |num| %>
     <tr>
       <td><%= @fxmatches[num].id %> </td>
       <td><%= @fxmatches[num].zipcode %></td>
-      <td class="requestor"><%= @fxmatches[num].requestor.first_name %></td>
       <td><%= @fxmatches[num].amount %></td>
       <td class="source"><%= @fxmatches[num].curr_sell %></td>
       <td><%= ((@cpty_fx_rates[num].fractional)/100.00).round(2) %></td>
       <td class="requestor"> <%= @cpty_converted_vals[num] %></td>
       <td class="quote"><%= @fxmatches[num].curr_buy %></td>
-      <td class="requestor"><%= @fxmatches[num].requestor.email %></td>
+      <td><%= @target_cpty_difference[num] %></td>
+      <td class="requestor"><a href="mailto:<%= @fxmatches[num].requestor.email %>"><%= @fxmatches[num].requestor.email %></a></td>
     </tr>
     <% end %>
   </table>
   <br>
 
-<!-- <form action="/">
-  <input type="submit" value="CALCULATE">
-</form> -->
 
 </div>

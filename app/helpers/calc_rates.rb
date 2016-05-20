@@ -4,6 +4,7 @@ helpers do
     Money.default_bank = Money::Bank::GoogleCurrency.new
     @converted_vals = []
     @fx_rates = []
+    @target_cpty_difference = []
     counter = 0
     while counter < transactions.size
       @amount = transactions[counter].amount
@@ -25,7 +26,7 @@ helpers do
         @cpty_converted_val = money.exchange_to(@fxmatches[counter].curr_buy)
         @cpty_converted_vals << (@cpty_converted_val.to_f)
         @cpty_fx_rates << (@cpty_converted_val / @cpty_amount)
-        # binding.pry
+        @target_cpty_difference << (@amount - @cpty_converted_vals[counter]).to_d
       end
       counter += 1
     end
