@@ -19,7 +19,7 @@ post '/fxtrans' do
   if @fxtran.save #saves new fxtran or returns false if unsuccessful
     redirect '/fxtrans' #redirect back to fxtrans index page
   else
-    erb :'fxtrans/new' # show new fxtrans view again(potentially displaying errors)
+    erb :'/users/:id' # show new fxtrans view again(potentially displaying errors)
   end
 
 end
