@@ -4,7 +4,7 @@ get '/fxtrans' do
                    .order('curr_buy ASC')
                    .order('curr_sell ASC')
                    .order('amount DESC')
-  calculate_rate(@fxtrans)
+  calculate_rate(@fxtrans, [])
 
   erb :'fxtrans/index'
 end

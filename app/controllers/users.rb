@@ -22,26 +22,9 @@ end
 get '/users/:id' do
   @user = User.find(params[:id])
   if @user.id == session[:user_id]
-    Money.default_bank = Money::Bank::GoogleCurrency.new
-    @converted_vals = []
-    @fx_rates = []
-    counter = 0
-    while counter < @user.fxrequests.size
-      @amount = @user.fxrequests[counter].amount
-      money = Money.new(@amount * 100, @user.fxrequests[counter].curr_sell)
-      @converted_val = money.exchange_to(@user.fxrequests[counter].curr_buy)
-      @converted_vals << @converted_val
-      @fx_rates << (@converted_val / @amount)
+    user_fxrequest = @user.fxrequests
 
-      @fxmatches = Fxtran.where(curr_sell: @user.fxrequests[counter].curr_buy,
-                                 curr_buy: @user.fxrequests[counter].curr_sell,
-                                 zipcode: @user.fxrequests[counter].zipcode)
-                         .where.not(requestor_id: session[:user_id])
-
-      counter += 1
-    end
-    @fx_rates
-    @converted_vals
+    calculate_rate(user_fxrequest, user_fxrequest)
 
     erb :'users/show'
   else
