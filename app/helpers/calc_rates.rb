@@ -14,10 +14,18 @@ helpers do
 
       if matching_fx.length == 0
       else
-         @fxmatches = Fxtran.where(curr_sell: matching_fx[counter].curr_buy,
-                                    curr_buy: matching_fx[counter].curr_sell,
-                                     zipcode: matching_fx[counter].zipcode)
-                     .where.not(requestor_id: session[:user_id])
+      @cpty_fx_rates = []
+      @cpty_converted_vals = []
+        @fxmatches = Fxtran.where(curr_sell: matching_fx[counter].curr_buy,
+                                   curr_buy: matching_fx[counter].curr_sell,
+                                    zipcode: matching_fx[counter].zipcode)
+                    .where.not(requestor_id: session[:user_id])
+        @cpty_amount = @fxmatches[counter].amount
+        money = Money.new(@cpty_amount * 100, @fxmatches[counter].curr_sell)
+        @cpty_converted_val = money.exchange_to(@fxmatches[counter].curr_buy)
+        @cpty_converted_vals << (@cpty_converted_val.to_f)
+        @cpty_fx_rates << (@cpty_converted_val / @cpty_amount)
+        # binding.pry
       end
       counter += 1
     end
