@@ -25,31 +25,26 @@ get '/users/:id' do
     Money.default_bank = Money::Bank::GoogleCurrency.new
     @converted_vals = []
     @fx_rates = []
+    @fx_mathces = []
     counter = 0
     while counter < @user.fxrequests.size
-      # binding.pry
       @amount = @user.fxrequests[counter].amount
-      curr_have = @user.fxrequests[counter].curr_sell
-      curr_want = @user.fxrequests[counter].curr_buy
-      money = Money.new(@amount * 100, curr_have)
-      @converted_val = money.exchange_to(curr_want)
+      money = Money.new(@amount * 100, @user.fxrequests[counter].curr_sell)
+      @converted_val = money.exchange_to(@user.fxrequests[counter].curr_buy)
       @converted_vals << @converted_val
       @fx_rates << (@converted_val / @amount)
+
+      @fxmatches = Fxtran.where(curr_sell: @user.fxrequests[counter].curr_buy,
+                                 curr_buy: @user.fxrequests[counter].curr_sell,
+                                 zipcode: @user.fxrequests[counter].zipcode)
       counter += 1
     end
     @fx_rates
     @converted_vals
 
-    # binding.pry
-    # @amount = @user.fxrequests[0].amount
-    # curr_have = @user.fxrequests[0].curr_sell
-    # curr_want = @user.fxrequests[0].curr_buy
-    # Money.default_bank = Money::Bank::GoogleCurrency.new
-    # money = Money.new(@amount * 100, curr_have) # amount is in cents
-    # @converted_val = money.exchange_to(curr_want)
-    # @fxrate = @converted_val / @amount
     erb :'users/show'
   else
     redirect '/'
   end
 end
+

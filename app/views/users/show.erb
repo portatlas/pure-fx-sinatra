@@ -14,6 +14,7 @@
       <th>WANT</th>
       <th>AT</th>
       <th>FOR</th>
+      <th>STATUS</th>
     </tr>
       <% @user.fxrequests.length.times do |num| %>
     <tr>
@@ -24,12 +25,33 @@
       <td class="quote"><%= @user.fxrequests[num].curr_buy %></td>
       <td><%= @fx_rates[num] %></td>
       <td><%= @converted_vals[num] %></td>
+      <td><%= @user.fxrequests[num].status %></td>
     </tr>
     <% end %>
   </table>
 
-<!-- iterate through each fx rate and display -->
-<!-- iterate through each converted value and display -->
-
+<h3>ALL FX's</h3>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>BY</th>
+      <th>AMOUNT</th>
+      <th>HAVE</th>
+      <th>WANT</th>
+      <th>ZIPCODE</th>
+      <th>FOR</th>
+    </tr>
+    <% @fxmatches.each do |tran| %>
+    <tr>
+      <td><%= tran.id %> </td>
+      <td class="requestor"><%= tran.requestor.first_name %></td>
+      <td><%= tran.amount %></td>
+      <td class="source"><%= tran.curr_sell %></td>
+      <td class="quote"><%= tran.curr_buy %></td>
+      <td><%= tran.zipcode %></td>
+      <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
+    </tr>
+    <% end %>
+  </table>
 
 </div>
