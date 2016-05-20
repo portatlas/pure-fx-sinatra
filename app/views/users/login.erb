@@ -1,5 +1,10 @@
 <div class="container">
   <h1>LOGIN:</h1>
+  <div class="errors">
+   <% if @login_error %>
+     <ul>Please validate your Username or Password!</ul>
+   <% end %>
+  </div>
 
   <form class="form-horizontal" action="/login" method="post">
 
