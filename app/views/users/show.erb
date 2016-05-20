@@ -8,25 +8,28 @@
   <table>
     <tr>
       <th>ID</th>
+      <th>ZIPCODE</th>
       <th>AMOUNT</th>
       <th>HAVE</th>
       <th>WANT</th>
-      <th>ZIPCODE</th>
       <th>AT</th>
+      <th>FOR</th>
     </tr>
-    <% @user.fxrequests.each do |tran| %>
+      <% @user.fxrequests.length.times do |num| %>
     <tr>
-      <td><%= tran.id %> </td>
-      <td><%= tran.amount %></td>
-      <td class="source"><%= tran.curr_sell %></td>
-      <td class="quote"><%= tran.curr_buy %></td>
-      <td><%= tran.zipcode %></td>
-      <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
+      <td><%= @user.fxrequests[num].id %> </td>
+      <td><%= @user.fxrequests[num].zipcode %></td>
+      <td><%= @user.fxrequests[num].amount %></td>
+      <td class="source"><%= @user.fxrequests[num].curr_sell %></td>
+      <td class="quote"><%= @user.fxrequests[num].curr_buy %></td>
+      <td><%= @fx_rates[num] %></td>
+      <td><%= @converted_vals[num] %></td>
     </tr>
     <% end %>
   </table>
 
-
+<!-- iterate through each fx rate and display -->
+<!-- iterate through each converted value and display -->
 
 
 </div>
