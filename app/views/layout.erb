@@ -3,25 +3,44 @@
 <head>
   <link rel="stylesheet" href="/css/normalize.css?app=skills">
   <link rel="stylesheet" href="/css/application.css?app=skills">
+  <!-- Bootstrap Core CSS -->
+  <link href="<%= url('bower_components/bootstrap/dist/css/bootstrap.min.css') %>" rel="stylesheet">
+
+  <!-- MetisMenu CSS -->
+  <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="<%= url('css/sb-admin-2.css')%> " rel="stylesheet">
+
+  <!-- Morris Charts CSS -->
+  <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href= "<%= url('bower_components/font-awesome/css/font-awesome.min.css')%>"  rel="stylesheet" type="text/css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js?app=skills"></script>
 
+
   <title></title>
 </head>
 <body>
-<nav>
-  <ul class="navbar-left"><li><a href="/">HOME</a></li></ul>
-  <ul class="navbar-left"><li><a href="/about">ABOUT</a></li></ul>
-  <ul class="navbar-right">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">PURE FX</a>
+  </div>
+ <ul class="nav navbar-top-links navbar-right">
+  <li><a href="/about">ABOUT</a></li>
     <% if logged_in? %>
-      <li><a href="/users/<%= session[:user_id] %>"><span class="" aria-hidden="true"></span>PROFILE</a></li>
-      <li><a href="/logout"><span class="" aria-hidden="true"></span>LOGOUT</a></li>
+      <li><a href="/users/<%= session[:user_id] %>">PROFILE</a></li>
+      <li><a href="/logout">LOGOUT</a></li>
     <% else %>
-      <li><a href="/users/new"><span class="" aria-hidden="true"></span>REGISTER</a></li>
-      <li><a href="/login"><span class="" aria-hidden="true"></span>LOGIN</a></li>
+      <li><a href="/users/new">REGISTER</a></li>
+      <li><a href="/login">LOGIN</a></li>
     <% end %>
-  </ul>
+ </ul>
+</div>
+</div>
 
 </nav>
   <%= yield %>

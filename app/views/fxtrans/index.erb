@@ -1,6 +1,6 @@
 <div class="container">
-<h1>ALL FX REQUEST</h1>
-  <table>
+<h3>ALL FX REQUEST</h3>
+  <table class="table table-striped table-bordered table-hover">
     <tr>
       <th>ID</th>
       <th>ZIPCODE</th>
@@ -22,7 +22,7 @@
       <td class="quote"><%= @fxtrans[num].curr_buy %></td>
       <td><%= @fx_rates[num] %></td>
       <td><%= @converted_vals[num] %></td>
-      <td><%= @fxtrans[num].status %></td>
+      <td class="open"><%= @fxtrans[num].status %></td>
     </tr>
     <% end %>
   </table>

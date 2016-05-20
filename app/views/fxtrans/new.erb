@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>NEW FX FORM</h1>
+  <h3>NEW FX FORM</h3>
   <form class="fx-request" action="/fxtrans" method="post">
 
     <input type="hidden" name="fxtran[requestor_id]" value="<%= session[:user_id] %>"></input>
@@ -8,7 +8,7 @@
       <label for="fxtran_trantype" class="control-label">I HAVE
 
       <label for="fxtran_amount" class="control-label"></label>
-      <input class="form-control" id="fxtran_amount" type="text" name="fxtran[amount]">
+      <input class="form" id="fxtran_amount" type="text" name="fxtran[amount]">
 
         OF THIS CURRENCY: </label>
       <select name="fxtran[curr_sell]" >
@@ -29,7 +29,7 @@
 
     <div class="form-group">
       <label for="fxtran_zipcode" class="control-label">ZIPCODE: </label>
-      <input class="form-control" id="fxtran_zipcode" type="text" name="fxtran[zipcode]">
+      <input class="form" id="fxtran_zipcode" type="text" name="fxtran[zipcode]">
     </div>
 
     <input type="hidden" name="fxtran[status]" value="OPEN"></input>

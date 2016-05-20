@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+
 .container {
   margin: 20px auto;
   width: 800px;
@@ -5,8 +8,8 @@
 }
 
 .container h1 {
-  font-size: 17pt;
-
+  font-size: 24pt;
+  font-family: 'Raleway', sans-serif;
 }
 
 nav {
@@ -80,10 +83,28 @@ form.quirks {
 }
 
 table{
-   border: 1px solid black;
+  font-family: 'Raleway', sans-serif;
+  border: 1px solid black;
 }
 
-th, td{
+th{
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+td{
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
   padding: 12px 15px 12px 15px;
   border: 1px solid black;
+}
+
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+
+.open{
+  color: #49b687;
 }

@@ -1,4 +1,4 @@
-$(document).ready(function () {
+// $(document).ready(function () {
   // $("body").on("click", ".fx-rate", function(event){
   //   event.preventDefault();
     // console.log("no - click")
@@ -27,5 +27,5 @@ $(document).ready(function () {
 
     //     }
     // });
-})
-});
+// })
+// });
