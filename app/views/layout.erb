@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="/css/normalize.css?app=skills">
+  <link rel="stylesheet" href="/css/application.css?app=skills">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js?app=skills"></script>
+
+  <title></title>
+</head>
+<body>
+<nav>
+  <ul class="navbar-left"><li><a href="/">HOME</a></li></ul>
+  <ul class="navbar-right">
+    <% if logged_in? %>
+      <li><a href="/users/<%= session[:user_id] %>"><span class="" aria-hidden="true"></span>PROFILE</a></li>
+      <li><a href="/logout"><span class="" aria-hidden="true"></span>LOGOUT</a></li>
+    <% else %>
+      <li><a href="/users/new"><span class="" aria-hidden="true"></span>REGISTER</a></li>
+      <li><a href="/login"><span class="" aria-hidden="true"></span>LOGIN</a></li>
+    <% end %>
+  </ul>
+
+</nav>
+  <%= yield %>
+</body>
+</html>

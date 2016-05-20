@@ -1,0 +1,28 @@
+<div class="container">
+<h1>All FX's</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>ZIPCODE</th>
+      <th>USER</th>
+      <th>AMOUNT</th>
+      <th>HAVE</th>
+      <th>WANT</th>
+      <th>RATES</th>
+      <th>EXPECTED VALUES</th>
+    </tr>
+    <% @fxtrans.length.times do |num| %>
+    <tr>
+      <td><%= @fxtrans[num].id %> </td>
+      <td><%= @fxtrans[num].zipcode %></td>
+      <td class="requestor"><%= @fxtrans[num].requestor.first_name %></td>
+      <td><%= @fxtrans[num].amount %></td>
+      <td class="source"><%= @fxtrans[num].curr_sell %></td>
+      <td class="quote"><%= @fxtrans[num].curr_buy %></td>
+      <td><%= @fx_rates[num] %></td>
+      <td><%= @converted_vals[num] %></td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
