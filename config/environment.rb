@@ -16,6 +16,13 @@ require 'bcrypt'
 require 'active_record'
 require 'logger'
 
+require 'json'
+
+require 'money'
+require 'money/bank/currencylayer'
+require 'money/bank/google_currency'
+
+
 require 'pry-byebug'
 
 require 'dotenv'

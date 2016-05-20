@@ -2,23 +2,23 @@
 <h1>All FX's</h1>
   <table>
     <tr>
-      <th>ID </th>
-      <th>ZIPCODE</th>
-      <th>OF</th>
-      <th>AMOUNT</th>
-      <th>FOR</th>
-      <th>AT</th>
+      <th>ID</th>
       <th>BY</th>
+      <th>AMOUNT</th>
+      <th>HAVE</th>
+      <th>WANT</th>
+      <th>ZIPCODE</th>
+      <th>AT</th>
     </tr>
     <% @fxtrans.each do |tran| %>
     <tr>
       <td><%= tran.id %> </td>
-      <td><%= tran.zipcode %></td>
-      <td><%= tran.curr_buy %></td>
+      <td class="requestor"><%= tran.requestor.first_name %></td>
       <td><%= tran.amount %></td>
-      <td><%= tran.curr_sell %></td>
-      <td>RATE TBD</td>
-      <td> <%= tran.requestor.email %></td>
+      <td class="source"><%= tran.curr_sell %></td>
+      <td class="quote"><%= tran.curr_buy %></td>
+      <td><%= tran.zipcode %></td>
+      <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
     </tr>
     <% end %>
   </table>

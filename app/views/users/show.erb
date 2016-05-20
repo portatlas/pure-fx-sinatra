@@ -3,6 +3,30 @@
 
 <a href="/fxtrans/new">Create an FX Request</a>
 
+<h3>OPEN FX's REQUEST</h3>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>AMOUNT</th>
+      <th>HAVE</th>
+      <th>WANT</th>
+      <th>ZIPCODE</th>
+      <th>AT</th>
+    </tr>
+    <% @user.fxrequests.each do |tran| %>
+    <tr>
+      <td><%= tran.id %> </td>
+      <td><%= tran.amount %></td>
+      <td class="source"><%= tran.curr_sell %></td>
+      <td class="quote"><%= tran.curr_buy %></td>
+      <td><%= tran.zipcode %></td>
+      <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
+    </tr>
+    <% end %>
+  </table>
+
+
 
 
 </div>

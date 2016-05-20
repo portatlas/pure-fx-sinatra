@@ -20,6 +20,11 @@ gem 'pry-byebug'
 
 gem 'shotgun'
 
+gem "json"
+
+gem 'google_currency'
+gem 'currencylayer'
+
 group :development, :test do
   gem 'faker'
   gem 'rspec'

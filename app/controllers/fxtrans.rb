@@ -35,4 +35,10 @@ post '/fxtrans' do
 
 end
 
-
+get '/fxrate' do
+  Money.default_bank = Money::Bank::GoogleCurrency.new
+  money = Money.new(1_00, "USD") # amount is in cents
+  p money
+  p money.exchange_to(:EUR)
+  # p money
+end
