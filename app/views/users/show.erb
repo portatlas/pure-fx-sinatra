@@ -36,19 +36,19 @@
 <% if @user.fxrequests.size >= 1 %>
   <h3>MATCHED FX REQUEST</h3>
   <table>
-    <% @fxmatches.length.times do |num| %>
     <tr>
       <th>ID</th>
       <th>ZIPCODE</th>
-      <th>CURRENCY <%= @fxmatches[num].requestor.first_name.upcase %> HAS</th>
+      <th>CURRENCY CPTY HAS</th>
       <th>HAVE</th>
       <th>RATE</th>
       <th>AMOUNT</th>
-      <th>CURRENCY <%= @fxmatches[num].requestor.first_name.upcase %> WANTS</th>
+      <th>CURRENCY CPTY WANTS</th>
       <th>DIFFERENCE</th>
       <th>EMAIL</th>
     </tr>
     <tr>
+    <% @fxmatches.length.times do |num| %>
       <td><%= @fxmatches[num].id %> </td>
       <td><%= @fxmatches[num].zipcode %></td>
       <td><%= @fxmatches[num].amount %></td>
