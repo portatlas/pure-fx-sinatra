@@ -21,13 +21,17 @@ helpers do
                                    curr_buy: matching_fx[counter].curr_sell,
                                     zipcode: matching_fx[counter].zipcode)
                     .where.not(requestor_id: session[:user_id])
-        @cpty_amount = @fxmatches[counter].amount
-        money = Money.new(@cpty_amount * 100, @fxmatches[counter].curr_sell)
-        @cpty_converted_val = money.exchange_to(@fxmatches[counter].curr_buy)
-        # binding.pry
+        matches_count = 0
+        while matches_count < @fxmatches.length
+        @cpty_amount = @fxmatches[matches_count].amount
+        money = Money.new(@cpty_amount * 100, @fxmatches[matches_count].curr_sell)
+        @cpty_converted_val = money.exchange_to(@fxmatches[matches_count].curr_buy)
         @cpty_converted_vals << (@cpty_converted_val.to_f)
-        @cpty_fx_rates << ((@cpty_converted_val / @cpty_amount)/100.00).round(2)
-        @target_cpty_difference << (@amount - @cpty_converted_vals[counter]).to_d
+        @cpty_fx_rates << ((@cpty_converted_val / @cpty_amount)).round(2)
+        @target_cpty_difference << (@amount - @cpty_converted_vals[matches_count]).to_d
+        matches_count += 1
+        # binding.pry
+        end
       end
       counter += 1
     end
