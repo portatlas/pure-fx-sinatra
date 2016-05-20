@@ -30,26 +30,26 @@
     <% end %>
   </table>
 
-<h3>ALL FX's</h3>
+<h3>MATCHED FX's</h3>
   <table>
     <tr>
       <th>ID</th>
-      <th>BY</th>
+      <th>ZIPCODE</th>
       <th>AMOUNT</th>
       <th>HAVE</th>
       <th>WANT</th>
-      <th>ZIPCODE</th>
       <th>FOR</th>
+      <th>BY</th>
     </tr>
     <% @fxmatches.each do |tran| %>
     <tr>
       <td><%= tran.id %> </td>
-      <td class="requestor"><%= tran.requestor.first_name %></td>
+      <td><%= tran.zipcode %></td>
       <td><%= tran.amount %></td>
       <td class="source"><%= tran.curr_sell %></td>
       <td class="quote"><%= tran.curr_buy %></td>
-      <td><%= tran.zipcode %></td>
       <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
+      <td class="requestor"><%= tran.requestor.first_name %></td>
     </tr>
     <% end %>
   </table>
