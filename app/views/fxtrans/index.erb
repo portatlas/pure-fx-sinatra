@@ -3,22 +3,24 @@
   <table>
     <tr>
       <th>ID</th>
-      <th>BY</th>
+      <th>ZIPCODE</th>
+      <th>USER</th>
       <th>AMOUNT</th>
       <th>HAVE</th>
       <th>WANT</th>
-      <th>ZIPCODE</th>
-      <th>FOR</th>
+      <th>RATES</th>
+      <th>EXPECTED VALUES</th>
     </tr>
-    <% @fxtrans.each do |tran| %>
+    <% @fxtrans.length.times do |num| %>
     <tr>
-      <td><%= tran.id %> </td>
-      <td class="requestor"><%= tran.requestor.first_name %></td>
-      <td><%= tran.amount %></td>
-      <td class="source"><%= tran.curr_sell %></td>
-      <td class="quote"><%= tran.curr_buy %></td>
-      <td><%= tran.zipcode %></td>
-      <td><a class="fx-rate" href="/fxrate">REQUEST RATE</a></td>
+      <td><%= @fxtrans[num].id %> </td>
+      <td><%= @fxtrans[num].zipcode %></td>
+      <td class="requestor"><%= @fxtrans[num].requestor.first_name %></td>
+      <td><%= @fxtrans[num].amount %></td>
+      <td class="source"><%= @fxtrans[num].curr_sell %></td>
+      <td class="quote"><%= @fxtrans[num].curr_buy %></td>
+      <td><%= @fx_rates[num] %></td>
+      <td><%= @converted_vals[num] %></td>
     </tr>
     <% end %>
   </table>

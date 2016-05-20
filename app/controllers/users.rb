@@ -25,7 +25,6 @@ get '/users/:id' do
     Money.default_bank = Money::Bank::GoogleCurrency.new
     @converted_vals = []
     @fx_rates = []
-    @fx_mathces = []
     counter = 0
     while counter < @user.fxrequests.size
       @amount = @user.fxrequests[counter].amount
@@ -36,12 +35,13 @@ get '/users/:id' do
 
       @fxmatches = Fxtran.where(curr_sell: @user.fxrequests[counter].curr_buy,
                                  curr_buy: @user.fxrequests[counter].curr_sell,
-                                 zipcode: @user.fxrequests[counter].zipcode).where.not(requestor_id: session[:user_id])
+                                 zipcode: @user.fxrequests[counter].zipcode)
+                         .where.not(requestor_id: session[:user_id])
+
       counter += 1
     end
     @fx_rates
     @converted_vals
-    @fxtrans = Fxtran.all
 
     erb :'users/show'
   else
